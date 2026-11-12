@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f7f4">
+    <title>{% block title %}People directory{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/app.css' %}">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="/" aria-label="People directory home">
+                <span class="brand-mark"><i data-lucide="contact-round"></i></span>
+                <span class="brand-copy">People<span>CONTACT DIRECTORY</span></span>
+            </a>
+            <nav class="primary-nav" aria-label="Main navigation">
+                <a class="nav-link {% if request.path == '/' or '/Edit/' in request.path or '/View/' in request.path or '/Delete/' in request.path %}is-active{% endif %}" href="/">
+                    <i data-lucide="users-round"></i><span>Directory</span>
+                </a>
+                <a class="nav-link {% if '/Add/' in request.path %}is-active{% endif %}" href="/Add/">
+                    <i data-lucide="user-round-plus"></i><span>Add person</span>
+                </a>
+            </nav>
+            <div class="sidebar-note"><span class="status-dot"></span> Your people, in one place</div>
+        </aside>
+        <main class="main-content">
+            <div class="mobile-context"><span>PEOPLE</span><span class="context-rule"></span><span>CONTACT DIRECTORY</span></div>
+            {% block page_content %}{% endblock %}
+        </main>
+    </div>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <script src="{% static 'app/app.js' %}"></script>
+</body>
+</html>

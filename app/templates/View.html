@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ user.name }} | People{% endblock %}
+{% block page_content %}
+<a class="back-link" href="/"><i data-lucide="arrow-left"></i><span>Back to directory</span></a>
+<section class="detail-panel" aria-label="Person details">
+    <header class="detail-heading">
+        <img class="detail-photo" src="{{ user.photo.url }}" alt="">
+        <div><p class="eyebrow">Contact profile</p><h1>{{ user.name }}</h1><p>{{ user.email }}</p></div>
+    </header>
+    <dl class="detail-list">
+        <div class="detail-row"><dt>Mobile number</dt><dd>{{ user.mobile_number }}</dd></div>
+        <div class="detail-row"><dt>Date of birth</dt><dd>{{ user.date_of_birth|date:"F j, Y" }}</dd></div>
+    </dl>
+    <div class="form-actions">
+        <a class="button" href="/Edit/{{ user.id }}"><i data-lucide="pencil"></i><span>Edit person</span></a>
+        <a class="button button-secondary" href="/">Done</a>
+    </div>
+</section>
+{% endblock %}

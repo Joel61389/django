@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Edit person | People{% endblock %}
+{% block page_content %}
+<a class="back-link" href="/"><i data-lucide="arrow-left"></i><span>Back to directory</span></a>
+<header class="page-header"><div><p class="eyebrow">Contact record</p><h1>Edit person</h1><p class="page-subtitle">Update this person’s information.</p></div></header>
+<section class="form-panel" aria-label="Edit person form">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+            <button type="submit" class="button"><i data-lucide="save"></i><span>Save changes</span></button>
+            <a class="button button-secondary" href="/">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}
